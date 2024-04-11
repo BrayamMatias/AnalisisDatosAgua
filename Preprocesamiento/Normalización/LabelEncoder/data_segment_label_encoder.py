@@ -43,33 +43,12 @@ data.to_csv('data_select_normalizado.csv', index=False)
 
 data = pd.read_csv("data_select_normalizado.csv")
 
-# Elimina filas con valores faltantes en la columna objetivo
-data.dropna(subset=['SITIO', 'DBO_mg/L', 'DQO_mg/L', 'SST_mg/L', 'COLI_FEC_NMP_100mL',
-            'E_COLI_NMP_100mL', 'OD_PORC', 'TOX_D_48_UT', 'TOX_V_15_UT'], inplace=True)
+#Guarda el DataFrame con valores faltantes en un archivo
+data_con_faltantes = data[data.isnull().any(axis=1)]
+data_con_faltantes.to_csv('data_select_con_faltantes.csv', index=False)
 
-# Guarda los datos en un archivo
-data.to_csv('data_select_no_faltantes.csv')
-
-
-# Carga el DataFrame con valores faltantes
-# data = pd.read_csv("data_select_normalizado.csv")
+#Guarda el Dataframe sin valores faltantes en un archivo
+data_sin_faltantes = data.dropna()
+data_sin_faltantes.to_csv('data_select_sin_faltantes.csv', index=False)
 
 
-# normal_data = pd.read_csv('data_select_no_faltantes.csv')
-# x = normal_data.drop(['costo'], axis=1)
-# y = normal_data.costo
-
-# x_train, x_test, y_train, y_test = train_test_split(
-#     x, y, test_size=0.2, random_state=42, shuffle=True)
-
-# x_train_b = np.c_[np.ones((len(x_train), 1)), x_train]
-# x_test_b = np.c_[np.ones((len(x_test), 1)), x_test]
-
-# parametros = np.linalg.inv(x_train_b.T.dot(
-#     x_train_b)).dot(x_train_b.T).dot(y_train)
-# print("Parámetros: ", parametros)
-
-# y_pred = x_test_b.dot(parametros)
-
-# mse = mean_squared_error(y_test, y_pred)
-# print("Error cuadrático medio: ", mse)
