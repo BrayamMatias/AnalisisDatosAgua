@@ -39,16 +39,16 @@ for var in variables:
     label_encoder(data, var)
 
 # Guarda el DataFrame normalizado
-data.to_csv('data_select_normalizado.csv', index=False)
+data.to_csv('data_select_normalizado_LE.csv', index=False)
 
-data = pd.read_csv("data_select_normalizado.csv")
+data = pd.read_csv("data_select_normalizado_LE.csv")
 
 #Guarda el DataFrame con valores faltantes en un archivo
 data_con_faltantes = data[data.isnull().any(axis=1)]
-data_con_faltantes.to_csv('data_select_con_faltantes.csv', index=False)
+data_con_faltantes.to_csv('data_select_con_faltantes_LE.csv', index=False)
 
 #Guarda el Dataframe sin valores faltantes en un archivo
 data_sin_faltantes = data.dropna()
-data_sin_faltantes.to_csv('data_select_sin_faltantes.csv', index=False)
+data_sin_faltantes.to_csv('data_select_sin_faltantes_LE.csv', index=False)
 
 

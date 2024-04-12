@@ -32,12 +32,12 @@ data_numerico = pd.DataFrame(data_numerico, columns=variables_numericas)
 data_normalizado = pd.concat([data_categorico, data_numerico], axis=1)
 
 # Guarda el DataFrame normalizado
-data_normalizado.to_csv('data_select_normalizado_standar_scaling.csv', index=False)
+data_normalizado.to_csv('data_select_normalizado_MMS.csv', index=False)
 
 # Guarda el DataFrame con valores faltantes en un archivo
 data_con_faltantes = data_normalizado[data_normalizado.isnull().any(axis=1)]
-data_con_faltantes.to_csv('data_select_con_faltantes_standar_scaling.csv', index=False)
+data_con_faltantes.to_csv('data_select_con_faltantes_MMS.csv', index=False)
 
 # Guarda el DataFrame sin valores faltantes en un archivo
 data_sin_faltantes = data_normalizado.dropna()
-data_sin_faltantes.to_csv('data_select_sin_faltantes_standar_scaling.csv', index=False)
+data_sin_faltantes.to_csv('data_select_sin_faltantes_MMS.csv', index=False)

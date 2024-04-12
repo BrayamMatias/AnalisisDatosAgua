@@ -1,16 +1,17 @@
+from sklearn.experimental import enable_iterative_imputer
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import IterativeImputer
 import pandas as pd
 import numpy as np
 
 # Cargar datos completos
-data = pd.read_csv("data_select_sin_faltantes.csv")
+data = pd.read_csv("data_select_sin_faltantes_MMS.csv")
 
 # Eliminar la columna 'SITIO'
 data.drop('SITIO', axis=1, inplace=True)
 
 # Cargar datos con valores faltantes
-data_faltante = pd.read_csv("data_select_con_faltantes.csv")
+data_faltante = pd.read_csv("data_select_con_faltantes_MMS.csv")
 
 # Extraer la columna 'SITIO'
 sitio = data_faltante['SITIO']
@@ -43,4 +44,4 @@ data_faltante_imputed = data_faltante_imputed.round(4)
 data_faltante_imputed.insert(0, 'SITIO', sitio)
 
 # Guardar el DataFrame en un archivo CSV
-data_faltante_imputed.to_csv('data_select_imputed_LR.csv', index=False)
+data_faltante_imputed.to_csv('data_select_imputed_LR_MMS.csv', index=False)
