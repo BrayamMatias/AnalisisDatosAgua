@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Cargar los datos
-data_lr_minmax = pd.read_csv("Preprocesamiento\Imputación\LR\data_select_imputed_LR_MMS.csv")
-data_lr_labelencoder = pd.read_csv("Preprocesamiento\Imputación\LR\data_select_imputed_LR_LE.csv")
+data_lr_minmax = pd.read_csv("Preprocesamiento\\Union\\LR\\union_LR_MMS.csv")
+data_lr_labelencoder = pd.read_csv("Preprocesamiento\\Union\\LR\\union_LR_LE.csv")
 
 # Calcular estadísticas para los datos de imputación de LR con MinMax Scaling
 stats_lr_minmax = data_lr_minmax.describe()
@@ -32,4 +32,4 @@ all_results = pd.concat([stats_lr_minmax, stats_lr_labelencoder,
                          correlation_lr_labelencoder_pearson, correlation_lr_labelencoder_spearman])
 
 # Guardar el DataFrame en un archivo CSV
-all_results.to_csv("analisis_estadistico_LR.csv")
+all_results.to_csv("Preprocesamiento\\Estadistica\\analisis_estadistico_LR.csv")

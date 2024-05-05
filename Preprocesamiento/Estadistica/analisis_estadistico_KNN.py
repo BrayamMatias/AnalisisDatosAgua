@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Cargar los datos
-data_knn_minmax = pd.read_csv("Preprocesamiento\Imputación\KNN\data_select_imputed_KNN_MMS.csv")
-data_knn_labelencoder = pd.read_csv("Preprocesamiento\Imputación\KNN\data_select_imputed_KNN_LE.csv")
+data_knn_minmax = pd.read_csv("Preprocesamiento\\Union\\KNN\\union_KNN_MMS.csv")
+data_knn_labelencoder = pd.read_csv("Preprocesamiento\\Union\\KNN\\union_KNN_LE.csv")
 
 # Calcular estadísticas para los datos de imputación de KNN con MinMax Scaling
 stats_knn_minmax = data_knn_minmax.describe()
@@ -32,4 +32,4 @@ all_results = pd.concat([stats_knn_minmax, stats_knn_labelencoder,
                          correlation_knn_labelencoder_pearson, correlation_knn_labelencoder_spearman])
 
 # Guardar el DataFrame en un archivo CSV
-all_results.to_csv("all_results.csv")
+all_results.to_csv("Preprocesamiento\\Estadistica\\analisis_estadistico_KNN.csv")
