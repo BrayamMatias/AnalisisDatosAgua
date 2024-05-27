@@ -32,3 +32,14 @@ selected_columns = list(set([feature[0] for feature in high_corr_features] + [fe
 #selected_columns.append('Class') #Variable objetivo
 selected_data = data[selected_columns]
 selected_data.to_csv('Preprocesamiento\\Reduccion\\LR\\reduccion_LR_LE.csv', index=False)
+
+# Crear una figura para los subgráficos
+fig, axs = plt.subplots(len(high_corr_features), figsize=(5, 5*len(high_corr_features)))
+
+# Visualizar las relaciones entre los pares de características con alta correlación
+for i, feature_pair in enumerate(high_corr_features):
+    plot = sns.scatterplot(data=data, x=feature_pair[0], y=feature_pair[1], ax=axs[i])
+
+plt.subplots_adjust(hspace = 0.5)
+plt.tight_layout()
+plt.show()

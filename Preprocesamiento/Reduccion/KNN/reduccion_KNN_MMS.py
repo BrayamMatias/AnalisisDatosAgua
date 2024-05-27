@@ -32,3 +32,21 @@ selected_columns = list(set([feature[0] for feature in high_corr_features] + [fe
 #selected_columns.append('Class') #Variable objetivo
 selected_data = data[selected_columns]
 selected_data.to_csv('Preprocesamiento\\Reduccion\\KNN\\reduccion_KNN_MMS.csv', index=False)
+
+# Cargar los datos reducidos
+reduced_data = pd.read_csv('Preprocesamiento\\Reduccion\\KNN\\reduccion_KNN_MMS.csv')
+
+# Crear una figura para los subgráficos
+fig, axs = plt.subplots(len(high_corr_features), figsize=(5, 5*len(high_corr_features)))
+
+# Verificar si hay más de una característica
+if len(high_corr_features) > 1:
+    # Visualizar las relaciones entre los pares de características con alta correlación
+    for i, feature_pair in enumerate(high_corr_features):
+        plot = sns.scatterplot(data=data, x=feature_pair[0], y=feature_pair[1], ax=axs[i])
+else:
+    plot = sns.scatterplot(data=data, x=high_corr_features[0][0], y=high_corr_features[0][1], ax=axs)
+
+plt.subplots_adjust(hspace = 0.5)
+plt.tight_layout()
+plt.show()
