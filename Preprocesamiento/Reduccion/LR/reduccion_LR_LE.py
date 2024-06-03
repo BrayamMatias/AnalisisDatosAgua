@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 data = pd.read_csv('Preprocesamiento\\Union\\LR\\union_LR_LE.csv')
 
 # Calcular la matriz de correlación
-correlation_matrix = data.corr()
+correlation_matrix = data.corr(method='kendall')
 
 plt.figure(figsize=(10,10))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.show()
 
 # Definir umbral de correlación
-umbral_correlacion = 0.6
+umbral_correlacion = 0.4
 
 # Encontrar las características que superan el umbral de correlación
 high_corr_features = []
