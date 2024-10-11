@@ -13,13 +13,15 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.show()
 
 # Definir umbral de correlación
-umbral_correlacion = 0.4
+umbral_correlacion_inferior = 0.4
+umbral_correlacion_superior = 0.5
+
 
 # Encontrar las características que superan el umbral de correlación
 high_corr_features = []
 for i in range(len(correlation_matrix.columns)):
     for j in range(i+1, len(correlation_matrix.columns)):
-        if correlation_matrix.iloc[i, j] > umbral_correlacion:
+        if correlation_matrix.iloc[i, j] > umbral_correlacion_inferior and correlation_matrix.iloc[i, j] < umbral_correlacion_superior:
             high_corr_features.append((correlation_matrix.columns[i], correlation_matrix.columns[j]))
 
 # Imprimir Características con alta correlación
